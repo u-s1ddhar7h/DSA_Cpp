@@ -30,3 +30,6 @@
 *.exe
 *.out
 *.app
+
+# NixOS and Flakes
+flake.lock
