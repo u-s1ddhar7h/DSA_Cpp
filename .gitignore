@@ -33,3 +33,6 @@
 
 # NixOS and Flakes
 flake.lock
+
+# Build directory
+build/
