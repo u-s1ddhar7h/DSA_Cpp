@@ -99,6 +99,14 @@ void arrReverse(int arr[], int size) {
     }
     return;
 }
+// fibonacci series using array
+int fiboArray(int n) {
+    int arr[1000] = {0, 1};
+    for (int i = 2; i < n; i++) {
+        arr[i] = arr[i - 1] + arr[i - 2];
+    }
+    return arr[n-1];
+}
 int main() {
     // array-declaration
     // syntax:
@@ -158,12 +166,15 @@ int main() {
     // }
     // charArray(chArr);
 
-    int arr[6] = {12, 35, 1, 10, 34, 2};
-    int size = sizeof(arr)/sizeof(arr[0]);
-    // cout << secondLargest(arr, sizeof(arr)/sizeof(arr[0])) << endl;
+    // int arr[6] = {12, 35, 1, 10, 34, 2};
+    // int arr[3] = {10, 5, 10};
+    // int size = sizeof(arr)/sizeof(arr[0]);
+    // cout << secondLargest(arr, size) << endl;
     // cout << thirdLargest(arr, sizeof(arr)/sizeof(arr[0])) << endl;
     // cout << linearSearch(arr, size, 7) << endl;
-    arrReverse(arr, size);
+    // arrReverse(arr, size);
+
+    cout << fiboArray(9) << endl;
 
     return 0;
 }
