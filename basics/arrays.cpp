@@ -76,6 +76,29 @@ int linearSearch(int arr[], int size, int target) {
     }
     return -1;
 }
+// Reverse array
+void arrReverse(int arr[], int size) {
+    // int temp[size];
+    // int i = size - 1, j = 0;
+    // while (i >= 0) {
+    //     temp[j] = arr[i];
+    //     i--;
+    //     j++;
+    // }
+    // for (int i = 0; i < size; i++) {
+    //     cout << temp[i] << " ";
+    // }
+    int i = 0, j = size - 1;
+    while (i < j) {
+        std::swap(arr[i], arr[j]);
+        i++;
+        j--;
+    }
+    for (int i = 0; i < size; i++) {
+        cout << arr[i] << " ";
+    }
+    return;
+}
 int main() {
     // array-declaration
     // syntax:
@@ -139,7 +162,8 @@ int main() {
     int size = sizeof(arr)/sizeof(arr[0]);
     // cout << secondLargest(arr, sizeof(arr)/sizeof(arr[0])) << endl;
     // cout << thirdLargest(arr, sizeof(arr)/sizeof(arr[0])) << endl;
-    cout << linearSearch(arr, size, 7) << endl;
+    // cout << linearSearch(arr, size, 7) << endl;
+    arrReverse(arr, size);
 
     return 0;
 }
