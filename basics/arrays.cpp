@@ -69,6 +69,13 @@ int thirdLargest(int arr[], int size) {
     }
     return thirdLargest;
 }
+// Linear Search in array
+int linearSearch(int arr[], int size, int target) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == target) return i;
+    }
+    return -1;
+}
 int main() {
     // array-declaration
     // syntax:
@@ -129,8 +136,10 @@ int main() {
     // charArray(chArr);
 
     int arr[6] = {12, 35, 1, 10, 34, 2};
-    cout << secondLargest(arr, sizeof(arr)/sizeof(arr[0])) << endl;
-    cout << thirdLargest(arr, sizeof(arr)/sizeof(arr[0])) << endl;
+    int size = sizeof(arr)/sizeof(arr[0]);
+    // cout << secondLargest(arr, sizeof(arr)/sizeof(arr[0])) << endl;
+    // cout << thirdLargest(arr, sizeof(arr)/sizeof(arr[0])) << endl;
+    cout << linearSearch(arr, size, 7) << endl;
 
     return 0;
 }
