@@ -107,6 +107,37 @@ int fiboArray(int n) {
     }
     return arr[n-1];
 }
+// Rotate array by 1 position.
+void rotateArr(int arr[], int arrSize) {
+    int temp = arr[arrSize - 1];
+    for (int i = arrSize - 2; i >= 0; i--) {
+        arr[i + 1] = arr[i];
+    }
+    arr[0] = temp;
+    for (int i = 0; i < arrSize; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    return;
+}
+// Rotate array 'n' times
+void rotateArrNTimes(int arr[], int arrSize, int cycle) {
+    int count = 1;
+    while (count <= cycle) {
+        int temp = arr[arrSize - 1];
+        for (int i = arrSize - 2; i >= 0; i--) {
+            arr[i + 1] = arr[i];
+        }
+        arr[0] = temp;
+        cout << "Rotation " << count << ": ";
+        for (int i = 0; i < arrSize; i++) {
+            cout << arr[i] << " ";
+        }
+        cout << endl;
+        count ++;
+    }
+    return;
+}
 int main() {
     // array-declaration
     // syntax:
@@ -174,7 +205,16 @@ int main() {
     // cout << linearSearch(arr, size, 7) << endl;
     // arrReverse(arr, size);
 
-    cout << fiboArray(9) << endl;
+    // cout << fiboArray(9) << endl;
+    int arr[6] = {2, 7, 4, 11, 5, 8};
+    int arrSize = sizeof(arr) / sizeof(arr[0]);
+    cout << "Original Array: ";
+    for (int i = 0; i < arrSize; i++) {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+    rotateArr(arr, arrSize);
+    rotateArrNTimes(arr, arrSize, 3);
 
     return 0;
 }
