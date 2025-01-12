@@ -41,11 +41,27 @@ int firstAndLastPos(int arr[], int n, int key) {
     }
     return last;
 }
+// Insert position
+int insertPosition(int arr[], int n, int target) {
+    int start = 0, end = n - 1, mid;
+    int index = n;
+    while (start <= end) {
+        mid = start + (end - start) / 2;
+        if (arr[mid] == target) return mid;
+        else if (arr[mid] < target) start = mid + 1;
+        else {
+            index = mid;
+            end = mid - 1;
+        }
+    }
+    return index;
+}
 int main() {
-    int arr[10] = {2, 4, 6, 8, 10, 10, 14, 16, 18, 20};
+    int arr[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     int n = sizeof(arr) / sizeof(arr[0]);
-    int key = 4;
+    int key = 30;
     // cout << binarySearch(arr, n, key) << endl;
-    cout << firstAndLastPos(arr, n, key) << endl;
+    // cout << firstAndLastPos(arr, n, key) << endl;
+    cout << insertPosition(arr, n, key) << endl;
     return 0;
 }
