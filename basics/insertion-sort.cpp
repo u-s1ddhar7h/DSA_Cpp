@@ -53,11 +53,11 @@ void insertionSortAscLast(int arr[], int n) {
     printArray(arr, n);
 }
 int main() {
-    int arr[6] = {6, 5, 4, 3, 2, 1};
+    // int arr[6] = {6, 5, 4, 3, 2, 1};
     char ch[6] = {'v', 'l', 'k', 'h', 'e', 'a'};
-    int arr[6] = {1, 2, 3, 4, 5, 6};
+    // int arr[6] = {1, 2, 3, 4, 5, 6};
     int n = sizeof(ch) / sizeof(ch[0]);
-    insertionSortAscLast(arr, n);
+    // insertionSortAscLast(arr, n);
     insertionSort(ch, n);
     return 0;
 }
