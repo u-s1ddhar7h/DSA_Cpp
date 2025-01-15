@@ -108,20 +108,34 @@ int mountainPeak(int arr[], int n) {
     }
     return peak;
 }
+int kthPositiveMissing(int arr[], int n, int k) {
+    int start = 0, end = n - 1;
+    int ans = n;
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        if (arr[mid] - mid - 1 >= k) {
+            ans = mid;
+            end = mid - 1;
+        } else start = mid + 1;
+    }
+    // after the above loop we get the index at which we are missing kth integers.
+    return ans + k;
+}
 int main() {
     // int arr[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     // int arr[5] = {2, 4, 4, 4, 5};
-    int arr[7] = {2, 4, 6, 8, 10, 8, 5};
+    // int arr[7] = {2, 4, 6, 8, 10, 8, 5};
     // int arr[3] = {0, 1, 0};
     // int arr[5] = {3, 5, 3, 2, 0};
+    int arr[6] = {2, 3, 4, 7, 11, 12};
     int n = sizeof(arr) / sizeof(arr[0]);
-    int key = 4;
+    int key = 5;
     // cout << binarySearch(arr, n, key) << endl;
     // cout << firstAndLastPos(arr, n, key) << endl;
     // cout << insertPosition(arr, n, key) << endl;
     // cout << sqRoot(49) << endl;
     // cout << totalOccurrence(arr, n, key) << endl;
-    cout << mountainPeak(arr, n) << endl;
-    // cout << -2 / 2 << endl;
+    // cout << mountainPeak(arr, n) << endl;
+    cout << kthPositiveMissing(arr, n, key) << endl;
     return 0;
 }
