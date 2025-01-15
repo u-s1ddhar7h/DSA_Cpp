@@ -121,6 +121,30 @@ int kthPositiveMissing(int arr[], int n, int k) {
     // after the above loop we get the index at which we are missing kth integers.
     return ans + k;
 }
+int bookAllocation(int arr[], int n, int m) {
+    int start = -1, end = 0, ans = 0;
+    // find max-element and total-sum
+    for (int i = 0; i < n; i++) {
+        start = max(start, arr[i]);
+        end += arr[i];
+    }
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        int page = 0, studCount = 1;
+        for (int i = 0; i < n; i++) {
+            page += arr[i];
+            if (page > mid) {
+                studCount++;
+                page = arr[i];
+            }
+        }
+        if (studCount <= m) {
+            ans = mid;
+            end = mid - 1;
+        } else start = mid + 1;
+    }
+    return ans;
+}
 int main() {
     // int arr[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     // int arr[5] = {2, 4, 4, 4, 5};
@@ -136,6 +160,7 @@ int main() {
     // cout << sqRoot(49) << endl;
     // cout << totalOccurrence(arr, n, key) << endl;
     // cout << mountainPeak(arr, n) << endl;
-    cout << kthPositiveMissing(arr, n, key) << endl;
+    // cout << kthPositiveMissing(arr, n, key) << endl;
+    cout << bookAllocation(arr, n, 2) << endl;
     return 0;
 }
