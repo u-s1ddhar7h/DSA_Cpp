@@ -125,7 +125,7 @@ int bookAllocation(int arr[], int n, int m) {
     int start = -1, end = 0, ans = 0;
     // find max-element and total-sum
     for (int i = 0; i < n; i++) {
-        start = max(start, arr[i]);
+        start = std::max(start, arr[i]);
         end += arr[i];
     }
     while (start <= end) {
@@ -151,7 +151,8 @@ int main() {
     // int arr[7] = {2, 4, 6, 8, 10, 8, 5};
     // int arr[3] = {0, 1, 0};
     // int arr[5] = {3, 5, 3, 2, 0};
-    int arr[6] = {2, 3, 4, 7, 11, 12};
+    // int arr[6] = {2, 3, 4, 7, 11, 12};
+    int arr[4] = {12, 34, 67, 90};
     int n = sizeof(arr) / sizeof(arr[0]);
     int key = 5;
     // cout << binarySearch(arr, n, key) << endl;
