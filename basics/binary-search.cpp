@@ -145,6 +145,31 @@ int bookAllocation(int arr[], int n, int m) {
     }
     return ans;
 }
+int painterProblem(int arr[], int n, int k) {
+    int start = -1, end = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > start)
+            start = arr[i];
+        end += arr[i];
+    }
+    int ans = 0;
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        int walls = 0, painter = 1;
+        for (int i = 0; i < n; i++) {
+            walls += arr[i];
+            if (walls > mid) {
+                painter++;
+                walls = arr[i];
+            }
+        }
+        if (painter <= k) {
+            ans = mid;
+            end = mid - 1;
+        } else start = mid + 1;
+    }
+    return ans;
+}
 int main() {
     // int arr[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     // int arr[5] = {2, 4, 4, 4, 5};
@@ -152,7 +177,8 @@ int main() {
     // int arr[3] = {0, 1, 0};
     // int arr[5] = {3, 5, 3, 2, 0};
     // int arr[6] = {2, 3, 4, 7, 11, 12};
-    int arr[4] = {12, 34, 67, 90};
+    // int arr[4] = {12, 34, 67, 90};
+    int arr[5] = {5, 10, 30, 20, 15};
     int n = sizeof(arr) / sizeof(arr[0]);
     int key = 5;
     // cout << binarySearch(arr, n, key) << endl;
@@ -162,6 +188,7 @@ int main() {
     // cout << totalOccurrence(arr, n, key) << endl;
     // cout << mountainPeak(arr, n) << endl;
     // cout << kthPositiveMissing(arr, n, key) << endl;
-    cout << bookAllocation(arr, n, 2) << endl;
+    // cout << bookAllocation(arr, n, 2) << endl;
+    cout << painterProblem(arr, n, 3) << endl;
     return 0;
 }
