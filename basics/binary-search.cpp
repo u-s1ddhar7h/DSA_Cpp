@@ -195,6 +195,34 @@ int shipPackages(int arr[], int n, int d) {
     }
     return ans;
 }
+// Aggressive Cows
+int aggressiveCows(int arr[], int n, int k) {
+    // k is number of cows
+    // first sort the array
+    // We are using insertionSort for sorting the array
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j > 0; j--) {
+            if (arr[j] < arr[j - 1])
+                std::swap(arr[j], arr[j - 1]);
+        }
+    }
+    int start = 1, end = arr[n - 1] - arr[0], ans;
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        int cow = 1, stall = arr[0];
+        for (int i = 1; i < n; i++) {
+            if (stall + mid <= arr[i]) {
+                cow++;
+                stall = arr[i];
+            }
+        }
+        if (cow >= k) {
+            ans = mid;
+            start = mid + 1;
+        } else end = mid - 1;
+    }
+    return ans;
+}
 int main() {
     // int arr[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     // int arr[5] = {2, 4, 4, 4, 5};
@@ -205,9 +233,10 @@ int main() {
     // int arr[4] = {12, 34, 67, 90};
     // int arr[5] = {5, 10, 30, 20, 15};
     // int arr[6] = {3, 2, 2, 4, 1, 4};
-    int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    // int arr[10] = {1,2,3,4,5,6,7,8,9,10};
+    int arr[5] = {1, 2, 4, 8, 9};
     int n = sizeof(arr) / sizeof(arr[0]);
-    int key = 5;
+    int key = 3;
     // cout << binarySearch(arr, n, key) << endl;
     // cout << firstAndLastPos(arr, n, key) << endl;
     // cout << insertPosition(arr, n, key) << endl;
@@ -217,6 +246,7 @@ int main() {
     // cout << kthPositiveMissing(arr, n, key) << endl;
     // cout << bookAllocation(arr, n, 2) << endl;
     // cout << painterProblem(arr, n, 3) << endl;
-    cout << shipPackages(arr, n, 5) << endl;
+    // cout << shipPackages(arr, n, 5) << endl;
+    cout << aggressiveCows(arr, n, key) << endl;
     return 0;
 }
