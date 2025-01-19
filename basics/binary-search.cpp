@@ -170,6 +170,31 @@ int painterProblem(int arr[], int n, int k) {
     }
     return ans;
 }
+int shipPackages(int arr[], int n, int d) {
+    // find the max-element and sum of array
+    int start = -1, end = 0, ans = 0;
+    for (int i = 0; i < n; i++) {
+        if (arr[i] > start)
+            start = arr[i];
+        end += arr[i];
+    }
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        int weight = 0, day = 1;
+        for (int i = 0; i < n; i++) {
+            weight += arr[i];
+            if (weight > mid) {
+                day++;
+                weight = arr[i];
+            }
+        }
+        if (day <= d) {
+            ans = mid;
+            end = mid - 1;
+        } else start = mid + 1;
+    }
+    return ans;
+}
 int main() {
     // int arr[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     // int arr[5] = {2, 4, 4, 4, 5};
@@ -178,7 +203,9 @@ int main() {
     // int arr[5] = {3, 5, 3, 2, 0};
     // int arr[6] = {2, 3, 4, 7, 11, 12};
     // int arr[4] = {12, 34, 67, 90};
-    int arr[5] = {5, 10, 30, 20, 15};
+    // int arr[5] = {5, 10, 30, 20, 15};
+    // int arr[6] = {3, 2, 2, 4, 1, 4};
+    int arr[10] = {1,2,3,4,5,6,7,8,9,10};
     int n = sizeof(arr) / sizeof(arr[0]);
     int key = 5;
     // cout << binarySearch(arr, n, key) << endl;
@@ -189,6 +216,7 @@ int main() {
     // cout << mountainPeak(arr, n) << endl;
     // cout << kthPositiveMissing(arr, n, key) << endl;
     // cout << bookAllocation(arr, n, 2) << endl;
-    cout << painterProblem(arr, n, 3) << endl;
+    // cout << painterProblem(arr, n, 3) << endl;
+    cout << shipPackages(arr, n, 5) << endl;
     return 0;
 }
