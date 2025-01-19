@@ -223,6 +223,29 @@ int aggressiveCows(int arr[], int n, int k) {
     }
     return ans;
 }
+// KOKO eating Bananas
+int kokoEatingBanana(int arr[], int n, int h) {
+    int start = 0, end = 0, ans;
+    for (int i = 0; i < n; i++) {
+        start += arr[i];
+        end = std::max(end, arr[i]);
+    }
+    start /= h;
+    while (start <= end) {
+        int mid = start + (end - start) / 2;
+        int time = 0;
+        for (int i = 0; i < n; i++) {
+            time += arr[i] / mid;
+            if (arr[i] % mid)
+                time++;
+        }
+        if (time <= h) {
+            ans = mid;
+            end = mid - 1;
+        } else start = mid + 1;
+    }
+    return ans;
+}
 int main() {
     // int arr[10] = {2, 4, 6, 8, 10, 12, 14, 16, 18, 20};
     // int arr[5] = {2, 4, 4, 4, 5};
@@ -234,9 +257,10 @@ int main() {
     // int arr[5] = {5, 10, 30, 20, 15};
     // int arr[6] = {3, 2, 2, 4, 1, 4};
     // int arr[10] = {1,2,3,4,5,6,7,8,9,10};
-    int arr[5] = {1, 2, 4, 8, 9};
+    // int arr[5] = {1, 2, 4, 8, 9};
+    int arr[4] = {3, 6, 11, 7};
     int n = sizeof(arr) / sizeof(arr[0]);
-    int key = 3;
+    int key = 8;
     // cout << binarySearch(arr, n, key) << endl;
     // cout << firstAndLastPos(arr, n, key) << endl;
     // cout << insertPosition(arr, n, key) << endl;
@@ -247,6 +271,7 @@ int main() {
     // cout << bookAllocation(arr, n, 2) << endl;
     // cout << painterProblem(arr, n, 3) << endl;
     // cout << shipPackages(arr, n, 5) << endl;
-    cout << aggressiveCows(arr, n, key) << endl;
+    // cout << aggressiveCows(arr, n, key) << endl;
+    cout << kokoEatingBanana(arr, n, key) << endl;
     return 0;
 }
