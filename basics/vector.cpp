@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
-#include <algorithm> // for std::sort and std::greater
+#include <algorithm> // std::sort, std::greater, std::count, std::max_element, std::min_element, std::lower_bound, std::upper_bound
+#include <numeric> // std::accumulate
 
 using std::cout;
 using std::endl;
@@ -108,6 +109,24 @@ int main() {
     printVector(vec4);
     std::sort(vec4.rbegin(), vec4.rend());
     printVector(vec4);
+
+    // count, max, min, minmax, sum
+    vector<int> vec5 = {1, 2, 3, 2, 4, 2};
+    int count = std::count(vec5.begin(), vec5.end(), 2);
+    cout << count << endl;
+    auto minVal = std::min_element(vec5.begin(), vec5.end());
+    auto maxVal = std::max_element(vec5.begin(), vec5.end());
+    cout << *minVal << " " << *maxVal << endl;
+    auto [minIt, maxIt] = std::minmax_element(vec5.begin(), vec5.end());
+    cout << *minIt << " " << *maxIt << endl;
+    int sum = std::accumulate(vec5.begin(), vec5.end(), 0);
+    cout << sum << endl;
+
+    // lower and upper bound
+    vector<int> vec6 = {11, 34, 56, 67, 89};
+    auto lb = std::lower_bound(vec6.begin(), vec6.end(), 34);
+    auto ub = std::upper_bound(vec6.begin(), vec6.end(), 34);
+    cout << "Lower bound: " << *lb << "\nUpper bound: " << *ub << endl;
 
     return 0;
 }
