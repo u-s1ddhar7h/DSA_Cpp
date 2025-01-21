@@ -41,6 +41,18 @@ void printVectorNWays(vector<int> vec) {
     cout << endl;
 }
 
+void lowerUpperBound(vector<int> vec, int target) {
+    // find element using lower bound
+    auto lb = std::lower_bound(vec.begin(), vec.end(), target);
+    if (*lb == target) cout << "Element found" << endl;
+    else cout << "Element not found" << endl;
+
+    // find number of smaller and larger element than target
+    auto ub = std::upper_bound(vec.begin(), vec.end(), target);
+    cout << "No. of Smaller elements: " << lb - vec.begin() << endl;
+    cout << "No. of Greater elements: " << vec.end() - ub << endl;
+}
+
 int main() {
     vector<int> v;
     vector<int> v1(5, 1);
@@ -127,6 +139,9 @@ int main() {
     auto lb = std::lower_bound(vec6.begin(), vec6.end(), 34);
     auto ub = std::upper_bound(vec6.begin(), vec6.end(), 34);
     cout << "Lower bound: " << *lb << "\nUpper bound: " << *ub << endl;
+
+    vector<int> vec7 = {11, 15, 19, 28, 35, 49, 100};
+    lowerUpperBound(vec7, 105);
 
     return 0;
 }
