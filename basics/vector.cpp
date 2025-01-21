@@ -53,6 +53,17 @@ void lowerUpperBound(vector<int> vec, int target) {
     cout << "No. of Greater elements: " << vec.end() - ub << endl;
 }
 
+// return vector from function
+std::vector<int> generateVector() {
+    std::vector<int> result;
+    result.push_back(18);
+    result.push_back(24);
+    result.push_back(33);
+    result.push_back(48);
+    result.push_back(66);
+    return result;
+}
+
 int main() {
     vector<int> v;
     vector<int> v1(5, 1);
@@ -142,6 +153,9 @@ int main() {
 
     vector<int> vec7 = {11, 15, 19, 28, 35, 49, 100};
     lowerUpperBound(vec7, 105);
+
+    vector<int> genVector = generateVector();
+    printVector(genVector);
 
     return 0;
 }
