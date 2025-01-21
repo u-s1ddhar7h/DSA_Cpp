@@ -8,7 +8,7 @@ using std::endl;
 using std::vector;
 
 // Print Vector
-void printVector(vector<int> vec) {
+void printVector(const vector<int>& vec) {
     for (int val : vec)
         cout << val << " ";
     cout << endl;
@@ -41,7 +41,7 @@ void printVectorNWays(vector<int> vec) {
     cout << endl;
 }
 
-void lowerUpperBound(vector<int> vec, int target) {
+void lowerUpperBound(const vector<int>& vec, int target) {
     // find element using lower bound
     auto lb = std::lower_bound(vec.begin(), vec.end(), target);
     if (*lb == target) cout << "Element found" << endl;
