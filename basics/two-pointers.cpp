@@ -74,14 +74,31 @@ int twoDifference(int arr[], int n, int target) {
     return 0;
 }
 
+// find pair with given product
+void twoProduct(int arr[], int n, int target) {
+    int start = 0, end = n - 1;
+    while (start < end) {
+        if (arr[start] * arr[end] == target) {
+            cout << "a: " << arr[start] << "\nb: " << arr[end] << endl;
+            return;
+        }
+        else if (arr[start] * arr[end] < target)
+            start++;
+        else end--;
+    }
+    cout << "No pair found" << endl;
+}
+
 int main() {
     int arr[] = {1, 0, 1, 0, 1, 0};
     int arr[] = {2, 7, 11, 15, 27};
     int arr[] = {1, 2, 4, 6, 18, 25};
     int arr[] = {2, 3, 5, 10, 50, 80};
+    int arr[] = {3, 7, 8, 11, 25};
     int n = sizeof(arr) / sizeof(arr[0]);
     segregateZeroOne(arr, n);
     twoSum(arr, n, 10);
     cout << twoDifference(arr, n, 45) << endl;
+    twoProduct(arr, n, 56);
     return 0;
 }
