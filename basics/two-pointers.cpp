@@ -1,7 +1,9 @@
 #include <iostream>
+#include <vector>
 
 using std::cout;
 using std::endl;
+using std::vector;
 
 void printArray(int arr[], int n) {
     for (int i = 0; i < n; i++)
@@ -89,16 +91,46 @@ void twoProduct(int arr[], int n, int target) {
     cout << "No pair found" << endl;
 }
 
+// prifix sum
+vector<int> prifixSum(int arr[], int n) {
+    vector<int> sum(n);
+    sum[0] = arr[0];
+    for (int i = 1; i < n; i++)
+        sum[i] = sum[i - 1] + arr[i];
+    return sum;
+}
+
+// suffix sum
+vector<int> suffixSum(int arr[], int n) {
+    vector<int> sum(n);
+    sum[n - 1] = arr[n - 1];
+    for (int i = n - 2; i >= 0; i--)
+        sum[i] = sum[i + 1] + arr[i];
+    return sum;
+}
+
+void printVector(const vector<int>& vec) {
+    for (int val : vec)
+        cout << val << " ";
+    cout << endl;
+}
+
 int main() {
     int arr[] = {1, 0, 1, 0, 1, 0};
     int arr[] = {2, 7, 11, 15, 27};
     int arr[] = {1, 2, 4, 6, 18, 25};
     int arr[] = {2, 3, 5, 10, 50, 80};
     int arr[] = {3, 7, 8, 11, 25};
+    int arr[] = {6, 4, 5, -3, 2, 8};
     int n = sizeof(arr) / sizeof(arr[0]);
     segregateZeroOne(arr, n);
     twoSum(arr, n, 10);
     cout << twoDifference(arr, n, 45) << endl;
     twoProduct(arr, n, 56);
+    vector<int> priSum = prifixSum(arr, n);
+    vector<int> sufSum = suffixSum(arr, n);
+    printArray(arr, n);
+    printVector(priSum);
+    printVector(sufSum);
     return 0;
 }
