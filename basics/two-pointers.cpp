@@ -61,12 +61,27 @@ void twoSum(int arr[], int n, int target) {
     }
 }
 
+// find pair with given difference
+int twoDifference(int arr[], int n, int target) {
+    int start = 0, end = 1;
+    while (end < n) {
+        if (arr[end] - arr[start] == target)
+            return 1;
+        else if (arr[end] - arr[start] < target)
+            end++;
+        else start++;
+    }
+    return 0;
+}
+
 int main() {
     int arr[] = {1, 0, 1, 0, 1, 0};
     int arr[] = {2, 7, 11, 15, 27};
     int arr[] = {1, 2, 4, 6, 18, 25};
+    int arr[] = {2, 3, 5, 10, 50, 80};
     int n = sizeof(arr) / sizeof(arr[0]);
     segregateZeroOne(arr, n);
     twoSum(arr, n, 10);
+    cout << twoDifference(arr, n, 45) << endl;
     return 0;
 }
