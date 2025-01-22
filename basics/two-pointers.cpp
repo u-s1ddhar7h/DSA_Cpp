@@ -115,6 +115,22 @@ void printVector(const vector<int>& vec) {
     cout << endl;
 }
 
+// print all Sub-Array
+void printSubArray(int arr[], int n) {
+    // Use two nested loops:
+    // The outer loop determines the starting index.
+    // The inner loop determines the ending index.
+    // For each pair of indices (i, j), print the elements from index i to j.
+    for (int i = 0; i < n; i++) {
+        for (int j = i; j < n; j++) {
+            for (int k = i; k <= j; k++) {
+                cout << arr[k] << " ";
+            }
+            cout << endl;
+        }
+    }
+}
+
 int main() {
     int arr[] = {1, 0, 1, 0, 1, 0};
     int arr[] = {2, 7, 11, 15, 27};
@@ -122,6 +138,7 @@ int main() {
     int arr[] = {2, 3, 5, 10, 50, 80};
     int arr[] = {3, 7, 8, 11, 25};
     int arr[] = {6, 4, 5, -3, 2, 8};
+    int arr[] = {1, 2, 3, 4};
     int n = sizeof(arr) / sizeof(arr[0]);
     segregateZeroOne(arr, n);
     twoSum(arr, n, 10);
@@ -132,5 +149,6 @@ int main() {
     printArray(arr, n);
     printVector(priSum);
     printVector(sufSum);
+    printSubArray(arr, n);
     return 0;
 }
