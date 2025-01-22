@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include <climits>
 
 using std::cout;
 using std::endl;
@@ -131,6 +132,29 @@ void printSubArray(int arr[], int n) {
     }
 }
 
+// largest sum contiguous subarray
+int largestSumSubArray(int arr[], int n) {
+    // Prefix Sum : O(N^2)
+    // int maxi = INT_MIN;
+    // for (int i = 0; i < n; i++) {
+    //     int prefix = 0;
+    //     for (int j = i; j < n; j++) {
+    //         prefix += arr[j];
+    //         maxi = std::max(prefix, maxi);
+    //     }
+    // }
+
+    // Kadane's Algorithm : O(N)
+    int maxi = INT_MIN, prefix = 0;
+    for (int i = 0; i < n; i++) {
+        prefix += arr[i];
+        maxi = std::max(prefix, maxi);
+        if (prefix < 0)
+            prefix = 0;
+    }
+    return maxi;
+}
+
 // divide array is 2-sub-array with equal sum
 bool equalSumSubArray(int arr[], int n) {
     // for (int i = 0; i < n - 1; i++) {
@@ -162,6 +186,8 @@ int main() {
     int arr[] = {6, 4, 5, -3, 2, 8};
     int arr[] = {1, 2, 3, 4};
     int arr[] = {3, 4, -2, 5, 8, 20, -10, 8};
+    int arr[] = {3, 4, -5, 8, -12, 7, 6, -2};
+    int arr[] = {4, -6, 2, 8};
     int n = sizeof(arr) / sizeof(arr[0]);
     segregateZeroOne(arr, n);
     twoSum(arr, n, 10);
@@ -174,5 +200,6 @@ int main() {
     printVector(sufSum);
     printSubArray(arr, n);
     cout << equalSumSubArray(arr, n);
+    cout << largestSumSubArray(arr, n) << endl;
     return 0;
 }
