@@ -131,6 +131,28 @@ void printSubArray(int arr[], int n) {
     }
 }
 
+// divide array is 2-sub-array with equal sum
+bool equalSumSubArray(int arr[], int n) {
+    // for (int i = 0; i < n - 1; i++) {
+    //     int sum1 = 0, sum2 = 0;
+    //     for (int j = 0; j <= i; j++)
+    //         sum1 += arr[j];
+    //     for (int j = i + 1; j < n; j++)
+    //         sum2 += arr[j];
+    //     if (sum1 == sum2)
+    //         return 1;
+    // }
+    int totalSum = 0, prefix = 0;
+    for (int i = 0; i < n; i++)
+        totalSum += arr[i];
+    for (int i = 0; i < n - 1; i++) {
+        prefix += arr[i];
+        if (prefix == totalSum - prefix)
+            return 1;
+    }
+    return 0;
+}
+
 int main() {
     int arr[] = {1, 0, 1, 0, 1, 0};
     int arr[] = {2, 7, 11, 15, 27};
@@ -139,6 +161,7 @@ int main() {
     int arr[] = {3, 7, 8, 11, 25};
     int arr[] = {6, 4, 5, -3, 2, 8};
     int arr[] = {1, 2, 3, 4};
+    int arr[] = {3, 4, -2, 5, 8, 20, -10, 8};
     int n = sizeof(arr) / sizeof(arr[0]);
     segregateZeroOne(arr, n);
     twoSum(arr, n, 10);
@@ -150,5 +173,6 @@ int main() {
     printVector(priSum);
     printVector(sufSum);
     printSubArray(arr, n);
+    cout << equalSumSubArray(arr, n);
     return 0;
 }
