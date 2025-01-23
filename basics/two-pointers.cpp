@@ -276,11 +276,69 @@ bool threeSum(int arr[], int n, int target) {
         int twoSum = target - arr[i];
         int start = i + 1, end = n - 1;
         while (start < end) {
-            if (arr[i] + arr[j] == twoSum)
+            if (arr[start] + arr[end] == twoSum)
                 return 1;
-            else if (arr[i] + arr[j] < towSum)
+            else if (arr[start] + arr[end] < twoSum)
                 start++;
             else end--;
+        }
+    }
+    return 0;
+}
+
+//
+int find4Numbers(int arr[], int n, int target) {
+    // Time-Complexity: O(n^4) & Space-Complexity: O(1)
+    // for (int a = 0; a < n - 3; a++) {
+    //     for (int b = a + 1; b < n - 2; b++) {
+    //         for (int c = b + 1; c < n - 1; c++) {
+    //             for (int d = c + 1; d < n; d++) {
+    //                 if (arr[a] + arr[b] + arr[c] + arr[d] == target)
+    //                     return 1;
+    //             }
+    //         }
+    //     }
+    // }
+
+    // Binary-Search: O(n^3 log n) & Space-Complexity: O(1)
+    // insertion-sort
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j > 0; j--) {
+            if (arr[j] < arr[j - 1])
+                std::swap(arr[j], arr[j - 1]);
+        }
+    }
+    // for (int a = 0; a < n - 3; a++) {
+    //     for (int b = a + 1; b < n - 2; b++) {
+    //         for (int c = b + 1; c < n - 1; c++) {
+    //             int search = target - arr[a] - arr[b] - arr[c];
+    //             int start = c + 1, end = n - 1;
+    //             while (start <= end) {
+    //                 int mid = start + (end - start) / 2;
+    //                 if (arr[mid] == search)
+    //                     return 1;
+    //                 else if (arr[mid] < search)
+    //                     start = mid + 1;
+    //                 else
+    //                     end = mid - 1;
+    //             }
+    //         }
+    //     }
+    // }
+
+    // Two-Pointer: O(n^3) & Space-Complexity: O(1)
+    for (int a = 0; a < n - 3; a++) {
+        for (int b = a + 1; b < n - 2; b++) {
+            int twoSum = target - arr[a] - arr[b];
+            int start = b + 1, end = n - 1;
+            while (start < end) {
+                if (arr[start] + arr[end] == twoSum)
+                    return 1;
+                else if (arr[start] + arr[end] < twoSum)
+                    start++;
+                else
+                    end--;
+            }
         }
     }
     return 0;
@@ -300,6 +358,7 @@ int main() {
     int arr[] = {9, 5, 8, 12, 2, 3, 7, 4};
     int arr[] = {4, 2, 0, 5, 2, 6, 2, 3};
     int arr[] = {1, 4, 45, 6, 10, 8};
+    int arr[] = {1, 5, 1, 0, 6, 0};
     int n = sizeof(arr) / sizeof(arr[0]);
     segregateZeroOne(arr, n);
     twoSum(arr, n, 10);
@@ -316,5 +375,6 @@ int main() {
     cout << maxDiff2Element(arr, n) << endl;
     cout << trapWater(arr, n) << endl;
     cout << threeSum(arr, n, 59) << endl;
+    cout << find4Numbers(arr, n, 7) << endl;
     return 0;
 }
