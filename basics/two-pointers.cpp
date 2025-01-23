@@ -210,6 +210,30 @@ int maxDiff2Element(int arr[], int n) {
     return ans;
 }
 
+// Trapping Rain Water
+int trapWater(int arr[], int n) {
+    // Time-Complexity: O(n) & Space-Complexity: O(1)
+    int trapped = 0, tallestIndex = 0;
+    int leftMax = arr[0], rightMax = arr[n - 1];
+    for (int i = 1; i < n; i++) {
+        if (arr[i] > arr[tallestIndex])
+            tallestIndex = i;
+    }
+    for (int i = 1; i < tallestIndex; i++) {
+        if (leftMax > arr[i])
+            trapped += leftMax - arr[i];
+        else
+            leftMax = arr[i];
+    }
+    for (int i = n - 2; i > tallestIndex; i--) {
+        if (rightMax > arr[i])
+            trapped += rightMax - arr[i];
+        else
+            rightMax = arr[i];
+    }
+    return trapped;
+}
+
 int main() {
     int arr[] = {1, 0, 1, 0, 1, 0};
     int arr[] = {2, 7, 11, 15, 27};
@@ -222,6 +246,7 @@ int main() {
     int arr[] = {3, 4, -5, 8, -12, 7, 6, -2};
     int arr[] = {4, -6, 2, 8};
     int arr[] = {9, 5, 8, 12, 2, 3, 7, 4};
+    int arr[] = {4, 2, 0, 5, 2, 6, 2, 3};
     int n = sizeof(arr) / sizeof(arr[0]);
     segregateZeroOne(arr, n);
     twoSum(arr, n, 10);
@@ -236,5 +261,6 @@ int main() {
     cout << equalSumSubArray(arr, n);
     cout << largestSumSubArray(arr, n) << endl;
     cout << maxDiff2Element(arr, n) << endl;
+    cout << trapWater(arr, n) << endl;
     return 0;
 }
