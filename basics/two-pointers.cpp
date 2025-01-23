@@ -177,6 +177,39 @@ bool equalSumSubArray(int arr[], int n) {
     return 0;
 }
 
+// Max difference b/w 2 element
+int maxDiff2Element(int arr[], int n) {
+    // Brute Force: O(n^2) & O(1)
+    int ans = INT_MIN;
+    // for (int i = 0; i < n - 1; i++) {
+    //     for (int j = i + 1; j < n; j++) {
+    //         if (arr[j] > arr[i]) {
+    //             int diff = arr[j] - arr[i];
+    //             ans = std::max(ans, diff);
+    //         }
+    //     }
+    // }
+
+    // Suffix Max : O(n) & O(n)
+    // vector<int> suffixMax(n);
+    // suffixMax[n - 1] = arr[n - 1];
+    // for (int i = n - 2; i >= 0; i--)
+    //     suffixMax[i] = std::max(arr[i], suffixMax[i + 1]);
+    // for (int i = n - 2; i >= 0 ; i--) {
+    //     int diff = suffixMax[i + 1] - arr[i];
+    //     ans = std::max(ans, diff);
+    // }
+
+    // Time-Complexity: O(n) & Space-Complexity: O(1)
+    int suffixMax = arr[n - 1];
+    for (int i = n - 2; i >= 0; i--) {
+        suffixMax = std::max(suffixMax, arr[i + 1]);
+        int diff = suffixMax - arr[i];
+        ans = std::max(ans, diff);
+    }
+    return ans;
+}
+
 int main() {
     int arr[] = {1, 0, 1, 0, 1, 0};
     int arr[] = {2, 7, 11, 15, 27};
@@ -188,6 +221,7 @@ int main() {
     int arr[] = {3, 4, -2, 5, 8, 20, -10, 8};
     int arr[] = {3, 4, -5, 8, -12, 7, 6, -2};
     int arr[] = {4, -6, 2, 8};
+    int arr[] = {9, 5, 8, 12, 2, 3, 7, 4};
     int n = sizeof(arr) / sizeof(arr[0]);
     segregateZeroOne(arr, n);
     twoSum(arr, n, 10);
@@ -201,5 +235,6 @@ int main() {
     printSubArray(arr, n);
     cout << equalSumSubArray(arr, n);
     cout << largestSumSubArray(arr, n) << endl;
+    cout << maxDiff2Element(arr, n) << endl;
     return 0;
 }
