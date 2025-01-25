@@ -74,6 +74,18 @@ void diagonalSum(int arr[][3]) {
     cout << "Second diagonal: " << diagonalTwo << endl;
 }
 
+// Given a matrix of size n*n, Print sum of diagonal element.
+int diagonalElementSum(int arr[][4]) {
+    int size = 4, diagonalSum = 0;
+    for (int i = 0; i < size; i++) {
+        diagonalSum += arr[i][i];
+        int j = size - i - 1;
+        if (j != i)
+            diagonalSum += arr[i][j];
+    }
+    return diagonalSum;
+}
+
 void reverseRow(int arr[][4], int row, int col) {
     // TC: O(n^2)
     for (int i = 0; i < row; i++) {
@@ -102,9 +114,11 @@ int main() {
     // cout << findElement(arr1, 4, 3, 17) << endl;
     // int arr[5][4] = {3, 4, 7, 18, 2, 8, 3, 9, 5, 4, 2, 2, 7, 3, 0, 8, 2, 8, 9, 1};
     // cout << rowMaxSum(arr, 5, 4) << endl;
-    // int arr[3][3] = {5, 8, 3, 6, 2, 8, 5, 3, 2};
+    // int arr[4][4] = {5, 8, 3, 9, 6, 2, 8, 4, 5, 3, 2, 2, 2, 8, 1, 9};
     // diagonalSum(arr);
-    int arr[3][4] = {2, 3, 4, 5, 1, 2, 6, 8, 4, 9, 3, 2};
-    reverseRow(arr, 3, 4);
+    // int arr[3][4] = {2, 3, 4, 5, 1, 2, 6, 8, 4, 9, 3, 2};
+    // reverseRow(arr, 3, 4);
+    int arr[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9, };
+    cout << diagonalElementSum(arr) << endl;
     return 0;
 }
