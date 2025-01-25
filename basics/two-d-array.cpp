@@ -51,15 +51,24 @@ void diagonalSum(int arr[][3]) {
     //             diagonalTwo += arr[i][j];
     //     }
     // }
+
     // TC: O(n) & SC: O(1)
-    for (int i = 0; i < 3; i++) {
+    // for (int i = 0; i < 3; i++) {
+    //     diagonalOne += arr[i][i];
+    // }
+    // int j = 2, i = 0;
+    // while (j >= 0) {
+    //     diagonalTwo += arr[i][j];
+    //     i++;
+    //     j--;
+    // }
+
+    // TC: O(n) & SC: O(1) - in single iteration
+    int size = 3; // assuming a 3x3 matrix
+    for (int i = 0; i < size; i++) {
         diagonalOne += arr[i][i];
-    }
-    int j = 2, i = 0;
-    while (j >= 0) {
+        int j = size - i - 1;
         diagonalTwo += arr[i][j];
-        i++;
-        j--;
     }
     cout << "First diagonal: " << diagonalOne << endl;
     cout << "Second diagonal: " << diagonalTwo << endl;
