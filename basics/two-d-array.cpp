@@ -23,6 +23,16 @@ int findElement(int arr[][3], int row, int col, int target) {
     return 0;
 }
 
+void eachColSum(int arr[][3], int row, int col) {
+    for (int j = 0; j < col; j++) {
+        int colSum = 0;
+        for (int i = 0; i < row; i++) {
+            colSum += arr[i][j];
+        }
+        cout << "Column " << j + 1 << " sum: " << colSum << endl;
+    }
+}
+
 // print row index with max sum
 int rowMaxSum(int arr[][4], int row, int col) {
     int max = INT_MIN, rowIndex = -1;
@@ -118,7 +128,8 @@ int main() {
     // diagonalSum(arr);
     // int arr[3][4] = {2, 3, 4, 5, 1, 2, 6, 8, 4, 9, 3, 2};
     // reverseRow(arr, 3, 4);
-    int arr[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9, };
-    cout << diagonalElementSum(arr) << endl;
+    int arr[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
+    // cout << diagonalElementSum(arr) << endl;
+    eachColSum(arr, 3, 3);
     return 0;
 }
