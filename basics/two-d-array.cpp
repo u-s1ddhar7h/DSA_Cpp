@@ -40,6 +40,31 @@ int rowMaxSum(int arr[][4], int row, int col) {
     return rowIndex;
 }
 
+void diagonalSum(int arr[][3]) {
+    int diagonalOne = 0, diagonalTwo = 0;
+    // TC:O(n^2) & SC:O(1)
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            if (i == j)
+                diagonalOne += arr[i][j];
+            if (i + j == col - 1)
+                diagonalTwo += arr[i][j];
+        }
+    }
+    // TC: O(n) & SC: O(1)
+    for (int i = 0; i < 3; i++) {
+        diagonalOne += arr[i][i];
+    }
+    int j = 2, i = 0;
+    while (j >= 0) {
+        diagonalTwo += arr[i][j];
+        i++;
+        j--;
+    }
+    cout << "First diagonal: " << diagonalOne << endl;
+    cout << "Second diagonal: " << diagonalTwo << endl;
+}
+
 int main() {
     // initialize
     int arr1[3][4] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
@@ -55,5 +80,7 @@ int main() {
     cout << findElement(arr1, 4, 3, 17) << endl;
     int arr[5][4] = {3, 4, 7, 18, 2, 8, 3, 9, 5, 4, 2, 2, 7, 3, 0, 8, 2, 8, 9, 1};
     cout << rowMaxSum(arr, 5, 4) << endl;
+    int arr[3][3] = {5, 8, 3, 6, 2, 8, 5, 3, 2};
+    diagonalSum(arr);
     return 0;
 }
