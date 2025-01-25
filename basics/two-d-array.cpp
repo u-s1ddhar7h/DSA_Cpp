@@ -43,14 +43,14 @@ int rowMaxSum(int arr[][4], int row, int col) {
 void diagonalSum(int arr[][3]) {
     int diagonalOne = 0, diagonalTwo = 0;
     // TC:O(n^2) & SC:O(1)
-    for (int i = 0; i < row; i++) {
-        for (int j = 0; j < col; j++) {
-            if (i == j)
-                diagonalOne += arr[i][j];
-            if (i + j == col - 1)
-                diagonalTwo += arr[i][j];
-        }
-    }
+    // for (int i = 0; i < row; i++) {
+    //     for (int j = 0; j < col; j++) {
+    //         if (i == j)
+    //             diagonalOne += arr[i][j];
+    //         if (i + j == col - 1)
+    //             diagonalTwo += arr[i][j];
+    //     }
+    // }
     // TC: O(n) & SC: O(1)
     for (int i = 0; i < 3; i++) {
         diagonalOne += arr[i][i];
@@ -65,22 +65,37 @@ void diagonalSum(int arr[][3]) {
     cout << "Second diagonal: " << diagonalTwo << endl;
 }
 
-int main() {
-    // initialize
-    int arr1[3][4] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
-    int arr2[3][4] = {5, 4, 3, 2, 1, 10, 9, 8, 7, 6, 20, 15};
-    int ans[3][4];
-    for (int i = 0; i < 3; i++) {
-        for (int j = 0; j < 4; j++) {
-            ans[i][j] = arr1[i][j] + arr2[i][j];
+void reverseRow(int arr[][4], int row, int col) {
+    // TC: O(n^2)
+    for (int i = 0; i < row; i++) {
+        // two pointer
+        int start = 0, end = col - 1;
+        while (start < end) {
+            std::swap(arr[i][start], arr[i][end]);
+            start++, end--;
         }
     }
+    print2DArray(arr, row, col);
+}
+
+int main() {
+    // initialize
+    // int arr1[3][4] = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12};
+    // int arr2[3][4] = {5, 4, 3, 2, 1, 10, 9, 8, 7, 6, 20, 15};
+    // int ans[3][4];
+    // for (int i = 0; i < 3; i++) {
+    //     for (int j = 0; j < 4; j++) {
+    //         ans[i][j] = arr1[i][j] + arr2[i][j];
+    //     }
+    // }
     // passing 2d array to a function.
-    print2DArray(ans, 3, 4);
-    cout << findElement(arr1, 4, 3, 17) << endl;
-    int arr[5][4] = {3, 4, 7, 18, 2, 8, 3, 9, 5, 4, 2, 2, 7, 3, 0, 8, 2, 8, 9, 1};
-    cout << rowMaxSum(arr, 5, 4) << endl;
-    int arr[3][3] = {5, 8, 3, 6, 2, 8, 5, 3, 2};
-    diagonalSum(arr);
+    // print2DArray(ans, 3, 4);
+    // cout << findElement(arr1, 4, 3, 17) << endl;
+    // int arr[5][4] = {3, 4, 7, 18, 2, 8, 3, 9, 5, 4, 2, 2, 7, 3, 0, 8, 2, 8, 9, 1};
+    // cout << rowMaxSum(arr, 5, 4) << endl;
+    // int arr[3][3] = {5, 8, 3, 6, 2, 8, 5, 3, 2};
+    // diagonalSum(arr);
+    int arr[3][4] = {2, 3, 4, 5, 1, 2, 6, 8, 4, 9, 3, 2};
+    reverseRow(arr, 3, 4);
     return 0;
 }
