@@ -23,6 +23,28 @@ int findElement(int arr[][3], int row, int col, int target) {
     return 0;
 }
 
+int findLargest(int arr[][3], int row, int col) {
+    int maxElement = INT_MIN;
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            if (arr[i][j] > maxElement)
+                maxElement = arr[i][j];
+        }
+    }
+    return maxElement;
+}
+
+int findSmallest(int arr[][3], int row, int col) {
+    int minElement = INT_MAX;
+    for (int i = 0; i < row; i++) {
+        for (int j = 0; j < col; j++) {
+            if (arr[i][j] < minElement)
+                minElement = arr[i][j];
+        }
+    }
+    return minElement;
+}
+
 void eachColSum(int arr[][3], int row, int col) {
     for (int j = 0; j < col; j++) {
         int colSum = 0;
@@ -130,6 +152,8 @@ int main() {
     // reverseRow(arr, 3, 4);
     int arr[3][3] = {1, 2, 3, 4, 5, 6, 7, 8, 9};
     // cout << diagonalElementSum(arr) << endl;
-    eachColSum(arr, 3, 3);
+    // eachColSum(arr, 3, 3);
+    cout << findLargest(arr, 3, 3) << endl;
+    cout << findSmallest(arr, 3, 3) << endl;
     return 0;
 }
