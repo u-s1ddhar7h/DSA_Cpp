@@ -23,7 +23,7 @@ void print2DVector(const vector<vector<int>>& vec) {
     }
 }
 
-void printWaveForm(vector<vector<int>> vec) {
+void waveForm(vector<vector<int>> vec) {
     int n = vec.size();
     int m = vec[0].size();
     for (int j = 0; j < m; j++) {
@@ -40,6 +40,37 @@ void printWaveForm(vector<vector<int>> vec) {
     }
 }
 
+void spiralForm(vector<vector<int>> vec) {
+    int top = 0, right = vec[0].size() - 1, bottom = vec.size() - 1, left = 0;
+    while (top <= bottom && right >= left) {
+        // Top
+        for (int i = left; i <= right; i++) {
+            cout << vec[top][i] << " ";
+        }
+        top++;
+        // Right
+        for (int i = top; i <= bottom; i++) {
+            cout << vec[i][right] << " ";
+        }
+        right--;
+        // Bottom
+        if (top <= bottom) {
+            for (int i = right; i >= left; i--) {
+                cout << vec[bottom][i] << " ";
+            }
+        }
+        bottom--;
+        // Left
+        if (left <= right) {
+            for (int i = bottom; i >= top; i--) {
+                cout << vec[i][left] << " ";
+            }
+        }
+        left++;
+    }
+    cout << endl;
+}
+
 int main() {
     // vector<vector<int>> vec(rows, vector<int>(cols, value));
     vector<vector<int>> vec = {
@@ -48,7 +79,8 @@ int main() {
         {9, 10, 11, 12},
         {13, 14, 15, 16}
     };
-    print2DVector(vec);
-    printWaveForm(vec);
+    // print2DVector(vec);
+    // waveForm(vec);
+    spiralForm(vec);
     return 0;
 }
