@@ -71,6 +71,14 @@ void spiralForm(vector<vector<int>> vec) {
     cout << endl;
 }
 
+void transposeMatrix(vector<vector<int>>& vec, int n) {
+    for (int i = 0; i < n - 1; i++) {
+        for (int j = i + 1; j < n; j++) {
+            std::swap(vec[i][j], vec[j][i]);
+        }
+    }
+}
+
 int main() {
     // vector<vector<int>> vec(rows, vector<int>(cols, value));
     vector<vector<int>> vec = {
@@ -81,6 +89,8 @@ int main() {
     };
     // print2DVector(vec);
     // waveForm(vec);
-    spiralForm(vec);
+    // spiralForm(vec);
+    transposeMatrix(vec, 4);
+    print2DVector(vec);
     return 0;
 }
