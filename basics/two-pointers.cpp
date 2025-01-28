@@ -344,37 +344,52 @@ int find4Numbers(int arr[], int n, int target) {
     return 0;
 }
 
+// Remove Element from Vector
+void removeElement(vector<int> &A, int B) {
+    for (int i = 0; i < A.size(); i++) {
+        if (A[i] == B) {
+            A.erase(A.begin() + i);
+            i--;
+        }
+    }
+    cout << A.size() << endl;
+    printVector(A);
+}
+
 int main() {
-    int arr[] = {1, 0, 1, 0, 1, 0};
-    int arr[] = {2, 7, 11, 15, 27};
-    int arr[] = {1, 2, 4, 6, 18, 25};
-    int arr[] = {2, 3, 5, 10, 50, 80};
-    int arr[] = {3, 7, 8, 11, 25};
-    int arr[] = {6, 4, 5, -3, 2, 8};
-    int arr[] = {1, 2, 3, 4};
-    int arr[] = {3, 4, -2, 5, 8, 20, -10, 8};
-    int arr[] = {3, 4, -5, 8, -12, 7, 6, -2};
-    int arr[] = {4, -6, 2, 8};
-    int arr[] = {9, 5, 8, 12, 2, 3, 7, 4};
-    int arr[] = {4, 2, 0, 5, 2, 6, 2, 3};
-    int arr[] = {1, 4, 45, 6, 10, 8};
-    int arr[] = {1, 5, 1, 0, 6, 0};
-    int n = sizeof(arr) / sizeof(arr[0]);
-    segregateZeroOne(arr, n);
-    twoSum(arr, n, 10);
-    cout << twoDifference(arr, n, 45) << endl;
-    twoProduct(arr, n, 56);
-    vector<int> priSum = prifixSum(arr, n);
-    vector<int> sufSum = suffixSum(arr, n);
-    printArray(arr, n);
-    printVector(priSum);
-    printVector(sufSum);
-    printSubArray(arr, n);
-    cout << equalSumSubArray(arr, n);
-    cout << largestSumSubArray(arr, n) << endl;
-    cout << maxDiff2Element(arr, n) << endl;
-    cout << trapWater(arr, n) << endl;
-    cout << threeSum(arr, n, 59) << endl;
-    cout << find4Numbers(arr, n, 7) << endl;
+    // int arr[] = {1, 0, 1, 0, 1, 0};
+    // int arr[] = {2, 7, 11, 15, 27};
+    // int arr[] = {1, 2, 4, 6, 18, 25};
+    // int arr[] = {2, 3, 5, 10, 50, 80};
+    // int arr[] = {3, 7, 8, 11, 25};
+    // int arr[] = {6, 4, 5, -3, 2, 8};
+    // int arr[] = {1, 2, 3, 4};
+    // int arr[] = {3, 4, -2, 5, 8, 20, -10, 8};
+    // int arr[] = {3, 4, -5, 8, -12, 7, 6, -2};
+    // int arr[] = {4, -6, 2, 8};
+    // int arr[] = {9, 5, 8, 12, 2, 3, 7, 4};
+    // int arr[] = {4, 2, 0, 5, 2, 6, 2, 3};
+    // int arr[] = {1, 4, 45, 6, 10, 8};
+    // int arr[] = {1, 5, 1, 0, 6, 0};
+    // int n = sizeof(arr) / sizeof(arr[0]);
+    // segregateZeroOne(arr, n);
+    // twoSum(arr, n, 10);
+    // cout << twoDifference(arr, n, 45) << endl;
+    // twoProduct(arr, n, 56);
+    // vector<int> priSum = prifixSum(arr, n);
+    // vector<int> sufSum = suffixSum(arr, n);
+    // printArray(arr, n);
+    // printVector(priSum);
+    // printVector(sufSum);
+    // printSubArray(arr, n);
+    // cout << equalSumSubArray(arr, n);
+    // cout << largestSumSubArray(arr, n) << endl;
+    // cout << maxDiff2Element(arr, n) << endl;
+    // cout << trapWater(arr, n) << endl;
+    // cout << threeSum(arr, n, 59) << endl;
+    // cout << find4Numbers(arr, n, 7) << endl;
+    // vector<int> A = {4, 1, 1, 2, 1, 3};
+    vector<int> A = {1, 1, 2, 4, 8};
+    removeElement(A, 1);
     return 0;
 }
