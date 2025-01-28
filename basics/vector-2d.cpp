@@ -40,6 +40,20 @@ void waveForm(vector<vector<int>> vec) {
     }
 }
 
+void snakePattern(vector<vector<int>>& vec) {
+    for (int i = 0; i < vec.size(); i++) {
+        if (i % 2 == 0) {
+            for (int j = 0; j < vec[0].size(); j++) {
+                cout << vec[i][j] << ' ';
+            }
+        } else {
+            for (int j = vec[0].size() - 1; j >= 0; j--) {
+                cout << vec[i][j] << ' ';
+            }
+        }
+    }
+}
+
 void spiralForm(vector<vector<int>> vec) {
     int top = 0, right = vec[0].size() - 1, bottom = vec.size() - 1, left = 0;
     while (top <= bottom && right >= left) {
@@ -90,7 +104,8 @@ int main() {
     // print2DVector(vec);
     // waveForm(vec);
     // spiralForm(vec);
-    transposeMatrix(vec, 4);
-    print2DVector(vec);
+    // transposeMatrix(vec, 4);
+    // print2DVector(vec);
+    snakePattern(vec);
     return 0;
 }
