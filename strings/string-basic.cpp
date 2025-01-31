@@ -4,6 +4,15 @@ using std::cout;
 using std::endl;
 using std::string;
 
+void stringReverse(string str) {
+    int start = 0, end = str.size() - 1;
+    while (start < end) {
+        std::swap(str[start], str[end]);
+        start++, end--;
+    }
+    cout << str << endl;
+}
+
 int main() {
     // Initialize string
     string s = "John";
@@ -21,5 +30,6 @@ int main() {
     string s4 = "Rohit is a \"good\" boy";
     cout << s4 << endl;
     cout << "\\0" << endl;
+    stringReverse("Rohit");
     return 0;
 }
