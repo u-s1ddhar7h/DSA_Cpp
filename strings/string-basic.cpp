@@ -12,24 +12,33 @@ void stringReverse(string str) {
     }
     cout << str << endl;
 }
+// find size without using builtin function size()
+int stringSize(string str) {
+    int size = 0;
+    while (str[size] != '\0') {
+        size++;
+    }
+    return size;
+}
 
 int main() {
     // Initialize string
-    string s = "John";
-    // concatinate two string or append
-    string s1 = "Rohit", s2 = "Mohit";
-    string s3 = s1 + s2; // s1.append(s2);
-    cout << s3 << endl;
-    // add character to a string
-    s1.push_back('p');
-    cout << s1 << endl;
-    // remove last character from string
-    s1.pop_back();
-    cout << s1 << endl;
-    // Escaping characters
-    string s4 = "Rohit is a \"good\" boy";
-    cout << s4 << endl;
-    cout << "\\0" << endl;
-    stringReverse("Rohit");
+    // string s = "John";
+    // // concatinate two string or append
+    // string s1 = "Rohit", s2 = "Mohit";
+    // string s3 = s1 + s2; // s1.append(s2);
+    // cout << s3 << endl;
+    // // add character to a string
+    // s1.push_back('p');
+    // cout << s1 << endl;
+    // // remove last character from string
+    // s1.pop_back();
+    // cout << s1 << endl;
+    // // Escaping characters
+    // string s4 = "Rohit is a \"good\" boy";
+    // cout << s4 << endl;
+    // cout << "\\0" << endl;
+    // stringReverse("Rohit");
+    cout << stringSize("Rohit") << endl;
     return 0;
 }
