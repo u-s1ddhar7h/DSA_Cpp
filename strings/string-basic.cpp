@@ -21,6 +21,16 @@ int stringSize(string str) {
     return size;
 }
 
+bool isPalindrome(string str) {
+    int start = 0, end = str.size() - 1;
+    while (start < end) {
+        if (str[start] != str[end])
+            return 0;
+        start++, end--;
+    }
+    return 1;
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -39,6 +49,7 @@ int main() {
     // cout << s4 << endl;
     // cout << "\\0" << endl;
     // stringReverse("Rohit");
-    cout << stringSize("Rohit") << endl;
+    // cout << stringSize("Rohit") << endl;
+    cout << isPalindrome("Siddharth") << endl;
     return 0;
 }
