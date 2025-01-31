@@ -15,6 +15,7 @@
   	    gcc
   	    gdb
   	    cmake
+  	    clang-tools
   	  ];
   	};
   };
