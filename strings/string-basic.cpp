@@ -72,6 +72,16 @@ void rotateStringKPos(string &str, int k) {
     reverseStringPart(str, str.size() - k, str.size() - 1);
 }
 
+// rotate string anti-clockwise by k position
+void rotateStringAntiKPos(string &str, int k) {
+    // 1st: reverse the entire string
+    reverseStringPart(str, 0, str.size() - 1);
+    // 2nd: reverse from 0 to k - 1
+    reverseStringPart(str, 0, k - 1);
+    // 3rd: reverse from k to size()-1
+    reverseStringPart(str, k, str.size() - 1);
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -95,7 +105,8 @@ int main() {
     string s = "SIDDHARTH";
     // rotateString(s);
     // rotateStringAnti(s);
-    rotateStringKPos(s, 2);
+    // rotateStringKPos(s, 2);
+    rotateStringAntiKPos(s, 2);
     cout << s << endl;
     return 0;
 }
