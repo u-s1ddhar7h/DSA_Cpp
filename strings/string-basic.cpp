@@ -42,6 +42,17 @@ void rotateString(string &s) {
     cout << s;
 }
 
+void rotateStringAnti(string & s) {
+    // rotate anti-clockwise by 1 position
+    // store 1st character
+    char firstChar = s[0];
+    for (int i = 1; i < s.size(); i++) {
+        s[i - 1] = s[i];
+    }
+    s[s.size() - 1] = firstChar;
+    cout << s << endl;
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -63,6 +74,7 @@ int main() {
     // cout << stringSize("Rohit") << endl;
     // cout << isPalindrome("Siddharth") << endl;
     string s = "SIDDHARTH";
-    rotateString(s);
+    // rotateString(s);
+    rotateStringAnti(s);
     return 0;
 }
