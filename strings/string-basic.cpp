@@ -12,6 +12,15 @@ void stringReverse(string str) {
     }
     cout << str << endl;
 }
+
+// reverse a part of string
+void reverseStringPart(string &str, int start, int end) {
+    while (start < end) {
+        std::swap(str[start], str[end]);
+        start++, end--;
+    }
+}
+
 // find size without using builtin function size()
 int stringSize(string str) {
     int size = 0;
@@ -53,6 +62,16 @@ void rotateStringAnti(string & s) {
     cout << s << endl;
 }
 
+// rotate string clockwise by k position
+void rotateStringKPos(string &str, int k) {
+    // 1st: reverse the entire string
+    reverseStringPart(str, 0, str.size() - 1);
+    // 2nd: reverse from 0 to size()-1-k
+    reverseStringPart(str, 0, str.size() - 1 - k);
+    // 3rd: reverse from size()-k to size()-1
+    reverseStringPart(str, str.size() - k, str.size() - 1);
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -75,6 +94,8 @@ int main() {
     // cout << isPalindrome("Siddharth") << endl;
     string s = "SIDDHARTH";
     // rotateString(s);
-    rotateStringAnti(s);
+    // rotateStringAnti(s);
+    rotateStringKPos(s, 2);
+    cout << s << endl;
     return 0;
 }
