@@ -31,6 +31,17 @@ bool isPalindrome(string str) {
     return 1;
 }
 
+void rotateString(string &s) {
+    // rotate clockwise by 1 position
+    // store last character
+    char temp = s[s.size() - 1];
+    for (int i = s.size() - 2; i >= 0; i--) {
+        s[i + 1] = s[i];
+    }
+    s[0] = temp;
+    cout << s;
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -50,6 +61,8 @@ int main() {
     // cout << "\\0" << endl;
     // stringReverse("Rohit");
     // cout << stringSize("Rohit") << endl;
-    cout << isPalindrome("Siddharth") << endl;
+    // cout << isPalindrome("Siddharth") << endl;
+    string s = "SIDDHARTH";
+    rotateString(s);
     return 0;
 }
