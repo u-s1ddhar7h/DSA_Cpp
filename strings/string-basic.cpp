@@ -82,6 +82,58 @@ void rotateStringAntiKPos(string &str, int k) {
     reverseStringPart(str, k, str.size() - 1);
 }
 
+bool isPangram(string &s) {
+    // TC: O(n) & SC: O(1)
+    // char ch = 'a';
+    // while (ch < 123) {
+    //     bool isPresent = 0;
+    //     for (int i = 0; i < s.size(); i++) {
+    //         if (ch == s[i]) {
+    //             isPresent = 1;
+    //             break;
+    //         }
+    //     }
+    //     if (isPresent == 0) return 0;
+    //     ch++;
+    // }
+    // return 1;
+
+    // TC: O(n) & SC: O(1)
+    int alphabet[26] = {0};
+    for (int i = 0; i < s.size(); i++) {
+        alphabet[s[i] - 'a'] = 1;
+    }
+    for (int i = 0; i < 26; i++) {
+        if (alphabet[i] == 0)
+            return 0;
+    }
+    return 1;
+}
+
+void sortString(string &s) {
+    // bubble sort: TC: O(n^2) & SC: O(1)
+    // for (int i = 0; i < s.size() - 1; i++) {
+    //     for (int j = 0; j < s.size() - 1 - i; j++) {
+    //         if (s[j] > s[j + 1])
+    //             std::swap(s[j], s[j + 1]);
+    //     }
+    // }
+
+    // TC: O(n) & SC: O(1)
+    int alphaCount[26] = {0};
+    for (int i = 0; i < s.size(); i++) {
+        alphaCount[s[i] - 'a']++;
+    }
+    s.clear();
+    for (int i = 0; i < 26; i++) {
+        char ch = 'a' + i;
+        while (alphaCount[i]) {
+            s += ch;
+            alphaCount[i]--;
+        }
+    }
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -102,11 +154,18 @@ int main() {
     // stringReverse("Rohit");
     // cout << stringSize("Rohit") << endl;
     // cout << isPalindrome("Siddharth") << endl;
-    string s = "SIDDHARTH";
+    // string s = "SIDDHARTH";
     // rotateString(s);
     // rotateStringAnti(s);
     // rotateStringKPos(s, 2);
-    rotateStringAntiKPos(s, 2);
+    // rotateStringAntiKPos(s, 2);
+    // cout << s << endl;
+    // string s = "thequickbrownfoxjumpsoverlazydog";
+    // string s = "siddharth";
+    // cout << isPangram(s) << endl;
+    // string s = "eabcabd";
+    string s = "siddharth";
+    sortString(s);
     cout << s << endl;
     return 0;
 }
