@@ -134,6 +134,35 @@ void sortString(string &s) {
     }
 }
 
+// longest palindrome
+int longestPalindrome(string s) {
+    int lowerAlpha[26] = {0}, upperAlpha[26] = {0};
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] >= 'a') {
+            lowerAlpha[s[i] - 'a']++;
+        } else {
+            upperAlpha[s[i] - 'A']++;
+        }
+    }
+    int ans = 0;
+    bool isOdd = 0;
+    for (int i = 0; i < 26; i++) {
+        if (lowerAlpha[i] % 2 == 0)
+            ans += lowerAlpha[i];
+        else {
+            ans += lowerAlpha[i] - 1;
+            isOdd = 1;
+        }
+        if (upperAlpha[i] % 2 == 0)
+            ans += upperAlpha[i];
+        else {
+            ans += upperAlpha[i] - 1;
+            isOdd = 1;
+        }
+    }
+    return ans + isOdd;
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -164,8 +193,10 @@ int main() {
     // string s = "siddharth";
     // cout << isPangram(s) << endl;
     // string s = "eabcabd";
-    string s = "siddharth";
-    sortString(s);
-    cout << s << endl;
+    // string s = "siddharth";
+    // sortString(s);
+    // cout << s << endl;
+    string s = "aaAbAcbd";
+    cout << longestPalindrome(s) << endl;
     return 0;
 }
