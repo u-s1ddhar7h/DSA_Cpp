@@ -1,8 +1,10 @@
 #include <iostream>
+#include <vector>
 
 using std::cout;
 using std::endl;
 using std::string;
+using std::vector;
 
 void stringReverse(string str) {
     int start = 0, end = str.size() - 1;
@@ -163,6 +165,30 @@ int longestPalindrome(string s) {
     return ans + isOdd;
 }
 
+// sorting the sentence
+void sortSentence(string &s) {
+    // TC: O(n) & SC: O(n)
+    vector<string> ans(10);
+    string word;
+    int totalIndex = 0;
+    s += ' ';
+    for (int i = 0; i < s.size(); i++) {
+        if (s[i] == ' ') {
+            int pos = word[word.size() - 1] - '0';
+            word.pop_back();
+            ans[pos] = word;
+            word.clear();
+            totalIndex++;
+        } else
+            word += s[i];
+    }
+    s.clear();
+    for (int i = 1; i <= totalIndex; i++) {
+        s += ans[i] + ' ';
+    }
+    s.pop_back();
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -196,7 +222,10 @@ int main() {
     // string s = "siddharth";
     // sortString(s);
     // cout << s << endl;
-    string s = "aaAbAcbd";
-    cout << longestPalindrome(s) << endl;
+    // string s = "aaAbAcbd";
+    // cout << longestPalindrome(s) << endl;
+    string s = "is2 sentence4 This1 a3";
+    sortSentence(s);
+    cout << s << endl;
     return 0;
 }
