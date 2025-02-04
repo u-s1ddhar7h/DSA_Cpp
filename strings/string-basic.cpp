@@ -189,6 +189,37 @@ void sortSentence(string &s) {
     s.pop_back();
 }
 
+// sort the vowels in string
+void sortVowelInString(string &s) {
+    // 1st: Extract vowels
+    string vowels;
+    for (char &c : s) {
+        switch (c) {
+            case 'A': case 'E': case 'I': case 'O': case 'U':
+            case 'a': case 'e': case 'i': case 'o': case 'u':
+                vowels += c;
+                c = '#';  // Mark position
+                break;
+        }
+    }
+    // 2nd: sort the vowels string
+    // bubble sort -> TC: O(n^2)
+    for (int i = 0; i < vowels.size() - 1; i++) {
+        for (int j = 0; j < vowels.size() - 1 - i; j++) {
+            if (vowels[j] > vowels[j + 1])
+                std::swap(vowels[j], vowels[j + 1]);
+        }
+    }
+    // 3rd: insert the sorted-vowels into their correct position
+    int vowelIndex = 0;
+    for (char &c : s) {
+        if (c == '#') {
+            c = vowels[vowelIndex++];
+        }
+    }
+    cout << s << endl;
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -224,8 +255,10 @@ int main() {
     // cout << s << endl;
     // string s = "aaAbAcbd";
     // cout << longestPalindrome(s) << endl;
-    string s = "is2 sentence4 This1 a3";
-    sortSentence(s);
-    cout << s << endl;
+    // string s = "is2 sentence4 This1 a3";
+    // sortSentence(s);
+    // cout << s << endl;
+    string s = "lEetcOde";
+    sortVowelInString(s);
     return 0;
 }
