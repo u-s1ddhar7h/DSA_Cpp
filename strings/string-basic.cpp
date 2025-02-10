@@ -246,6 +246,32 @@ string addStringInteger(string& num1, string& num2) {
     return ans;
 }
 
+// roman to integers
+int num(const char& ch) {
+    switch (ch) {
+        case 'I': return 1;
+        case 'V': return 5;
+        case 'X': return 10;
+        case 'L': return 50;
+        case 'C': return 100;
+        case 'D': return 500;
+        case 'M': return 1000;
+    }
+    return 0;
+}
+int romanToIntegers(const string& s) {
+    // TC: O(N) & SC: O(1)
+    int i = 0, sum = 0;
+    while (i < s.size() - 1) {
+        if (num(s[i]) < num(s[i + 1]))
+            sum -= num(s[i]);
+        else sum += num(s[i]);
+        i++;
+    }
+    sum += num(s[i]);
+    return sum;
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -286,9 +312,11 @@ int main() {
     // cout << s << endl;
     // string s = "lEetcOde";
     // sortVowelInString(s);
-    string num1 = "10", num2 = "3689";
-    if (num1.size() < num2.size())
-        cout << addStringInteger(num2, num1) << endl;
-    else cout << addStringInteger(num1, num2) << endl;
+    // string num1 = "10", num2 = "3689";
+    // if (num1.size() < num2.size())
+    //     cout << addStringInteger(num2, num1) << endl;
+    // else cout << addStringInteger(num1, num2) << endl;
+    string s = "MCCXLVIII";
+    cout << romanToIntegers(s);
     return 0;
 }
