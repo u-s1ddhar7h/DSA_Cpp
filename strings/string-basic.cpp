@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <iostream>
 #include <vector>
 
@@ -220,6 +221,31 @@ void sortVowelInString(string &s) {
     cout << s << endl;
 }
 
+// add two string as integer
+string addStringInteger(string& num1, string& num2) {
+    // TC: O(N) & SC: O(N)
+    string ans;
+    int i = num1.size() - 1, j = num2.size() - 1;
+    int sum = 0, carry = 0;
+    while (j >= 0) {
+        sum = (num1[i] - '0') + (num2[j] - '0') + carry;
+        carry = sum / 10;
+        char ch = '0' +  sum % 10;
+        ans += ch;
+        i--, j--;
+    }
+    while (i >= 0) {
+        sum = (num1[i] - '0') + carry;
+        carry = sum / 10;
+        char ch = '0' + sum % 10;
+        ans += ch;
+        i--;
+    }
+    if (carry) ans += '1';
+    std::reverse(ans.begin(), ans.end());
+    return ans;
+}
+
 int main() {
     // Initialize string
     // string s = "John";
@@ -258,7 +284,11 @@ int main() {
     // string s = "is2 sentence4 This1 a3";
     // sortSentence(s);
     // cout << s << endl;
-    string s = "lEetcOde";
-    sortVowelInString(s);
+    // string s = "lEetcOde";
+    // sortVowelInString(s);
+    string num1 = "10", num2 = "3689";
+    if (num1.size() < num2.size())
+        cout << addStringInteger(num2, num1) << endl;
+    else cout << addStringInteger(num1, num2) << endl;
     return 0;
 }
